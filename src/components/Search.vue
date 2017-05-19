@@ -4,6 +4,7 @@
     <a href="#" @click.prevent="reset">x</a>
     <input type="text" v-model="query" @keyup.enter="search" placeholder="🔎  Search here...">
     <button type="button" @click="search">Search</button>
+    <small>{{ found }}</small>
 
     <ul>
       <li v-for="r in results">
@@ -33,6 +34,19 @@
       return {
         query: '',
         results: []
+      }
+    },
+
+    computed: {
+      found () {
+        return this.results.length
+          ? `${this.results.length} items` : ''
+      }
+    },
+
+    watch: {
+      query (n, o) {
+        console.log(n, o)
       }
     },
 
