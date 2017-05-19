@@ -4,26 +4,69 @@
     <button type="button" @click="search">Search</button>
 
     <ul>
-      <li></li>
+      <li v-for="r in results">
+        <div class="result">
+          <p>{{ r.name }}</p>
+
+          <!-- ⚠️  En este caso agrego tambien un v-if para prevenir errores ya que la propiedad images puede venir vacia -->
+          <img v-if="r.images.length" :src="r.images[0].url" :alt="r.name">
+          <p v-else>🚫 🌅</p>
+        </div>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Search',
+  import spotify from '../services/spotify'
 
-  data () {
-    return {
-      query: '',
-      results: []
-    }
-  },
+  export default {
+    name: 'Search',
 
-  methods: {
-    search () {
-      console.log(this.query)
+    data () {
+      return {
+        query: '',
+        results: []
+      }
+    },
+
+    methods: {
+      search () {
+        // Hardcodeamos el parametro type con el valor "artits"
+        spotify.search(this.query, 'artist')
+          .then(res => {
+            console.log(res)
+            this.results = res.artists.items
+          })
+      }
     }
   }
-}
 </script>
+
+<style scoped>
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  li {
+    display: flex;
+    justify-content: center;
+    padding: 0.2em;
+    border: 1px solid #42b983;
+    margin: 0.2em;
+    width: 200px;
+    height: 200px;
+  }
+
+  .result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+</style>
