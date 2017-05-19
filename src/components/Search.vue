@@ -1,6 +1,8 @@
 <template lang="html">
   <div> <!-- ⚠️ Este div es importante: todos los componentes deben tener un unico elemento principal -->
-    <input type="text" v-model="query">
+
+    <a href="#" @click.prevent="reset">x</a>
+    <input type="text" v-model="query" @keyup.enter="search" placeholder="🔎  Search here...">
     <button type="button" @click="search">Search</button>
 
     <ul>
@@ -14,6 +16,10 @@
         </div>
       </li>
     </ul>
+
+    <h3 v-if="results.length === 0">
+      No results
+    </h3>
   </div>
 </template>
 
@@ -38,6 +44,11 @@
             console.log(res)
             this.results = res.artists.items
           })
+      },
+
+      reset () {
+        this.query = ''
+        this.results = []
       }
     }
   }
