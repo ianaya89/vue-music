@@ -7,15 +7,7 @@
     <small>{{ found }}</small>
 
     <ul>
-      <li v-for="r in results">
-        <div class="result">
-          <p>{{ r.name }}</p>
-
-          <!-- ⚠️  En este caso agrego tambien un v-if para prevenir errores ya que la propiedad images puede venir vacia -->
-          <img v-if="r.images.length" :src="r.images[0].url" :alt="r.name">
-          <p v-else>🚫 🌅</p>
-        </div>
-      </li>
+      <artist v-for="r in results" :artist="r" :key="r.id"></artist>
     </ul>
 
     <h3 v-if="results.length === 0">
@@ -25,10 +17,13 @@
 </template>
 
 <script>
+  import Artist from './Artist.vue'
   import spotify from '../services/spotify'
 
   export default {
     name: 'Search',
+
+    components: { Artist },
 
     data () {
       return {
@@ -80,26 +75,5 @@
   ul {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  li {
-    display: flex;
-    justify-content: center;
-    padding: 0.2em;
-    border: 1px solid #42b983;
-    margin: 0.2em;
-    width: 200px;
-    height: 200px;
-  }
-
-  .result {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  img {
-    width: 100px;
-    height: 100px;
   }
 </style>
