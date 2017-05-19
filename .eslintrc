@@ -3,6 +3,7 @@
   "plugins": ["html"],
 
   globals: {
-    "fetch": 0
+    "fetch": 0,
+    "location": 0,
   }
 }

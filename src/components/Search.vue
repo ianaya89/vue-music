@@ -44,10 +44,18 @@
       }
     },
 
-    watch: {
-      query (n, o) {
-        console.log(n, o)
-      }
+    // watch: {
+    //   query (n, o) {
+    //     console.log(n, o)
+    //   }
+    // },
+
+    created () {
+      if (location.pathname === '/') { return }
+
+      // El primer caracter es '/' por lo cual vamos a omitirlo
+      this.query = location.pathname.substring(1)
+      this.search()
     },
 
     methods: {
