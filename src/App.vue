@@ -1,18 +1,25 @@
 <template>
   <div id="app">
-    <h1>Vuetify</h1>
-    <hr>
-    <search></search>
+    <top></top>
+
+    <main>
+      <search></search>
+    </main>
+
+    <bottom></bottom>
   </div>
 </template>
 
 <script>
+  import Top from './components/layout/Top.vue'
+  import Bottom from './components/layout/Bottom.vue'
+
   import Search from './components/Search.vue'
 
   export default {
     name: 'app',
 
-    components: { Search }
+    components: { Search, Top, Bottom }
   }
 </script>
 
@@ -23,7 +30,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+main {
+  height: 72vh;
+  overflow: auto;
 }
 
 a {
