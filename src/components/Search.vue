@@ -13,22 +13,28 @@
     <h3 v-if="results.length === 0">
       No results
     </h3>
+
+    <toaster v-show="showToaster" :message="toasterMessage" @close="toggleToaster"></toaster>
   </div>
 </template>
 
 <script>
+  import Toaster from './Toaster.vue'
   import Artist from './Artist.vue'
   import spotify from '../services/spotify'
 
   export default {
     name: 'Search',
 
-    components: { Artist },
+    components: { Artist, Toaster },
 
     data () {
       return {
         query: '',
-        results: []
+        results: [],
+
+        showToaster: false,
+        toasterMessage: ''
       }
     },
 
@@ -61,11 +67,19 @@
             console.log(res)
             this.results = res.artists.items
           })
+          .catch(err => {
+            this.toggleToaster()
+            this.toasterMessage = err
+          })
       },
 
       reset () {
         this.query = ''
         this.results = []
+      },
+
+      toggleToaster () {
+        this.showToaster = !this.showToaster
       }
     }
   }
