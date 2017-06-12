@@ -1,18 +1,18 @@
 # vuetify
 
-> A Vue.js project
+> 📻 Web app para el Workshop introductior a Vue.js
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
+# instalar dependencias
+npm i
 
-# serve with hot reload at localhost:8080
+# servir app con hot reload en localhost:8080
 npm run dev
 
-# build for production with minification
+# compilar para produccion
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Para mas detalles o explicaciones de como funcinan las utilidades, consulta la [documentacioón de vue-loader](http://vuejs.github.io/vue-loader).
