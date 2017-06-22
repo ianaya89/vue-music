@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-Vue.filter('comma-list', (val) => {
-  if (!val || !val.genres) { return '' }
+Vue.filter('dash-list', (val) => {
+  if (!val) { return '' }
 
-  return val.join(', ')
+  return val.join(' - ')
 })
 
 new Vue({ // eslint-disable-line
