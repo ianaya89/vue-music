@@ -1,6 +1,6 @@
 # vuetify
 
-> 📻 Web app para el Workshop introductior a Vue.js
+> 📻 Web app para el [Workshop introductior a Vue.js](https://github.com/ianaya89/workshop-vuejs)
 
 ## Build Setup
 
