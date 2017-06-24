@@ -1,6 +1,6 @@
 <template lang="html">
   <header>
-    <h1>📻 Vuetify</h1>
+    <h1>📻 vue-music</h1>
   </header>
 </template>
 
