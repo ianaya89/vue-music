@@ -1,6 +1,6 @@
 const spotifyService = {
   // Esta es la url base de la API
-  baseUrl: 'https://api.spotify.com/v1'
+  baseUrl: 'https://platzi-music-api.now.sh'
 }
 
 spotifyService.search = function (query, type) {
